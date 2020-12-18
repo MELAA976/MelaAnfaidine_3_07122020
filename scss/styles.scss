@@ -1,0 +1,197 @@
+
+
+/*Les Variables*/
+$clrs-txt-grey: #353535;
+$color-icon: #7e7e7e;
+$clrs-bck-grnd-grey: #f6f6f6;
+$violet: #9356dc;
+$shadow-div: 0px 4px 8px 1px #d5d5d5;
+$border25: 25px;
+
+/*les placehaulder*/
+
+%center-element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*ombre porter pour les divs*/
+
+%violet-gradiant {
+    background: linear-gradient(180deg, adjust-hue($violet, 40deg),$violet)
+}
+
+/*les mixins*/
+
+/*forme carre*/
+@mixin form-container($min-w:auto, $w: auto, $h:0px, $pad: 5px){
+    min-width:$min-w;
+    width: $w;
+    height: $h;
+    padding: $pad;
+    transform: scale(1);
+    transition: transform 50ms;
+    transition-timing-function: 1000ms ease-in;
+    transition-delay: 50ms;
+
+    &:active {
+        transform: scale(1.03)
+    }
+
+}
+
+/*mixin pour les bouton violet*/
+@mixin btn {
+    @extend %violet-gradiant;
+    @include form-container($min-w: 220px, $pad: 15px);
+    font-weight: bold;
+    border-radius: $border25;
+    height: 50px;
+    border: none;
+    color: white;
+    box-shadow: 0px 4px 8px 1px #d5d5d5;
+    outline: none;
+}
+
+
+/*Géneral*/
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "roboto", sans-serif;
+}
+
+
+/*containeur génerale*/
+#container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 65px 340px 440px 1230px 200px;
+    grid-template-areas: 
+        "header"
+        "nav"
+        "foctio"
+        "resto"
+        "footer";
+
+}
+
+.header {
+    grid-area: header;
+    @extend %center-element;
+    z-index: 2;
+    box-shadow: 0px 3px 4px #d5d5d5;
+    &__logo {
+        width: 50%;
+    }
+    
+}
+
+
+.nav {
+    grid-area: nav;
+    z-index: 1;
+    @extend %center-element;
+    flex-direction: column;
+    position: relative;
+    background-color: $clrs-bck-grnd-grey;
+    
+    &__position{
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        background-color: #eaeaea;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__location{
+            width: 150px;
+            display: flex;
+            justify-content: space-around;
+
+            &__ville {
+                color: $clrs-txt-grey;
+            }
+        }
+    }
+
+    &__titre{
+        width: 250px;
+        text-align: center;
+    }
+
+    &__sous-titre {
+        width: 310px;
+        text-align: center;
+        font-weight: 300;
+        padding: 20px;
+
+    }
+
+    &__btn{
+        @include btn;        
+    }
+
+}
+
+
+.operation {
+    grid-area: foctio;
+    padding:0px 20px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__title {
+        margin-bottom: 25px;
+    }
+
+    &__step {
+        @include form-container($min-w: 325px,$w:100%, $h:70px, $pad:0px);
+        position: relative;
+        @extend %center-element;
+        justify-content: flex-start;
+        box-shadow: $shadow-div;
+        border-radius: $border25;
+        margin-bottom: 30px;
+        
+        &__nber {
+            position: absolute;
+            left: -10px;
+            @extend %center-element;
+            width: 25px;
+            height: 25px;
+            background-color: $violet;
+            border-radius: 50%;
+            color: white;
+            
+        }
+
+        &__icon{
+            color: $color-icon;
+            margin-left: 30px;
+        }
+        &__describes {
+            margin-left: 25px;
+            font-weight: bolder;
+        }
+
+
+    }
+    
+}
+
+
+#resto {
+    grid-area: resto;
+    background-color:yellow;
+}
+
+
+footer {
+    grid-area: footer;
+    background-color: maroon;
+}
