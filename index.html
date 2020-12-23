@@ -18,7 +18,7 @@
 
             <header class = "header">
                 <!--logo du site-->
-                <img src="/images/logo/ohmyfood.png" alt="logo-ohmyfood" class = "header__logo">
+                <img src="/images/logo/ohmyfood.png" alt = "logo-ohmyfood" class = "header__logo">
 
             </header>
 
@@ -48,37 +48,117 @@
             
             <!--partie foctionnement-->
             <section id = "foctio" class = "operation">
+                <div class = "center-pad">
+                    <h2 class="operation__title">Fonctionnement</h2>
 
-                <h2 class="operation__title">Fonctionnement</h2>
+                <div class = "operation__step">
+                    <div class = "operation__step__nber">1</div>
+                    <i class="fas fa-mobile-alt operation__step__icon"></i>
+                    <p class = "operation__step__describes">Choisissez un restaurant</p>
+                </div>
 
-              <div class = "operation__step">
-                  <div class = "operation__step__nber">1</div>
-                  <i class="fas fa-mobile-alt operation__step__icon"></i>
-                  <p class = "operation__step__describes">Choisissez un restaurant</p>
+                <div class = "operation__step">
+                    <div class = "operation__step__nber">2</div>
+                    <i class="fas fa-list-ul operation__step__icon"></i>
+                    <p class = "operation__step__describes">Composez votre menu</p>
+
+                </div>
+
+                <div class = "operation__step">
+                    <div class = "operation__step__nber">3</div>
+                    <i class="fas fa-store operation__step__icon"></i>
+                    <p class = "operation__step__describes">Composez votre menu</p>
               </div>
-
-              <div class = "operation__step">
-                  <div class = "operation__step__nber">2</div>
-                  <i class="fas fa-list-ul operation__step__icon"></i>
-                  <p class = "operation__step__describes">Composez votre menu</p>
-
-              </div>
-
-              <div class = "operation__step">
-                  <div class = "operation__step__nber">3</div>
-                  <i class="fas fa-store operation__step__icon"></i>
-                  <p class = "operation__step__describes">Composez votre menu</p>
-              </div>
+            </div>
                 
             </section>
 
-            <!--partie résultat des restaurants de la vile-->
-            <section id = "resto" class = "page-accueil">
 
-                <div id = "rsto-a-la-française" class = "" ></div>
-                <div id = "rsto-a-la-note enchantée" class = ""></div>
-                <div id = "rsto-a-la-palette-du-goût" class = ""></div>
-                <div id = "rsto-a-le-délice-des-sens" class = ""></div>
+            <!--partie résultat des restaurants de la vile-->
+            <section id = "resto" class = "reslt-restaurant">
+
+                <div class = "center-pad">
+                    <!--Le titre-->
+                    <h2 class = "reslt-restaurant__title">Restaurants</h2>
+
+                    <!--Le containeur-1-->
+                    <div id = "rsto-la-palette-du-gôut" class = "reslt-restaurant__containeur">
+
+                        <!--image-->
+                        <img src="images/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg" 
+                            alt="image-du-restaurant-La-palette-du-gôut" 
+                            class = "reslt-restaurant__containeur__img">
+
+                        <!--Le containeur de la description-->
+                        <div class = "reslt-restaurant__containeur__describes">
+    
+                                <p><em>la palette du gôut</em></br>
+                                Ménilmontant</p>
+                                
+                                <!--<i class="far fa-heart reslt-restaurant__describes__coeur"></i>-->
+                
+                        </div>
+
+                        
+                    </div>
+
+
+                    <!--Le containeur-2-->
+                    <div id = "rsto-A-la-française" class = "reslt-restaurant__containeur">
+
+                        <!--image-->
+                        <img src="images/restaurants/stil-u2Lp8tXIcjw-unsplash.jpg" 
+                        alt="image-du-restaurant-A-la-française" 
+                        class = "reslt-restaurant__containeur__img">
+
+                        <!--Le containeur de la description-->
+                        <div class = "reslt-restaurant__containeur__describes">
+                            <p><em>La note enchantée</em></br>
+                            Charonne</p>
+                            
+                            <!--<i class="far fa-heart reslt-restaurant__containeur__describes__coeur"></i>-->
+                        </div>
+
+                    </div>
+
+                    <!--Le containeur-3-->
+                    <div id = "rsto-la-française" class = "reslt-restaurant__containeur">
+                        <!--image-->
+                        <img src="images/restaurants/toa-heftiba-DQKerTsQwi0-unsplash.jpg" 
+                            alt="image-du-restaurant-A-la-française" 
+                            class = "reslt-restaurant__containeur__img">
+
+                        <!--Le containeur de la description-->
+                        <div class = "reslt-restaurant__containeur__describes">
+    
+                                <p><em>À la française</em></br>
+                                Cité Rouge</p>
+
+                                <!--<i class="far fa-heart reslt-restaurant__containeur__describes__coeur"></i>-->
+                        </div>
+                                
+                        
+    
+                    </div>
+
+                    <!--Le containeur-4-->
+                    <div id = "rsto-le-délice-des-sens" class = "reslt-restaurant__containeur">
+                        <!--image-->
+                        <img src="images/restaurants/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg" 
+                            alt="image-du-restaurant-Le-délice-des-sens" 
+                            class = "reslt-restaurant__containeur__img">
+
+                        <!--Le containeur de la description-->
+                        <div class = "reslt-restaurant__containeur__describes">
+    
+                                <p><em>Le délice des sens</em></br>
+                                Folie-Méricourt</p>
+
+                                <!--<i class="far fa-heart reslt-restaurant__containeur__describes__coeur"></i>-->
+                        </div>
+    
+                    </div>
+                </div>
                 
             </section>
     
