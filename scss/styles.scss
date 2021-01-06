@@ -5,6 +5,7 @@ $clrs-txt-grey: #353535;
 $color-icon: #7e7e7e;
 $clrs-bck-grnd-grey: #f6f6f6;
 $violet: #9356dc;
+$color-violet-gradiant: linear-gradient(180deg, adjust-hue($violet, 40deg),$violet);
 $shadow-div: 0px 4px 8px 1px #d5d5d5;
 $border25: 25px;
 
@@ -23,40 +24,73 @@ $border25: 25px;
 }
 /*ombre porter pour les divs*/
 
-%violet-gradiant {
-    background: linear-gradient(180deg, adjust-hue($violet, 40deg),$violet)
+%background-violet-gradiant{
+    background: linear-gradient(180deg, adjust-hue($violet, 40deg),$violet);
 }
+
 
 /*les mixins*/
 
 /*forme carre*/
-@mixin form-container($min-w:auto, $w: auto, $h:0px, $pad: 5px){
+@mixin form-container($min-w:100%, $w: auto, $h:0px, $pad: 5px){
     min-width:$min-w;
     max-width: $w;
     height: $h;
     padding: $pad;
-    transform: scale(1);
-    transition: transform 50ms;
-    transition-timing-function: 1000ms ease-in;
-    transition-delay: 50ms;
-
-    &:active {
-        transform: scale(1.03)
-    }
-
+    
 }
 
 /*mixin pour les bouton violet*/
 @mixin btn {
-    @extend %violet-gradiant;
-    @include form-container($min-w: 220px, $pad: 15px);
     font-weight: bold;
     border-radius: $border25;
     height: 50px;
     border: none;
-    color: white;
     box-shadow: 0px 4px 8px 1px #d5d5d5;
     outline: none;
+    z-index: 1;
+    transform: scale(1);
+    transition: transform 50ms;
+    transition-timing-function: ease-in;
+    transition-delay: 50ms;
+    
+    &:active{
+        &::after {
+            opacity: 1;
+        }
+
+        transform: scale(1.03);
+        box-shadow: 0px 4px 10px 4px #d5d5d5;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        opacity: 0;
+        background-color: lighten($violet, 15%);
+        z-index: -1;
+        transition: all 150ms;
+        
+    }
+}
+
+/**Les keyframe*/
+/*Animation du coeur*/
+@keyframes animation-heart{
+    0% {
+        transform: scale(1);
+    }
+
+    50%{
+        transform: scale(1.15);
+    }
+
+    100%{
+        transform: scale(1);
+    }
 }
 
 
@@ -68,10 +102,48 @@ $border25: 25px;
     font-family: "roboto", sans-serif;
 }
 
+
+.loader {
+
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    @extend %center-element;
+    background-color: white;
+    color: darken($color: $violet, $amount: 25);
+    z-index: 3;
+    &__lettre {
+        font-size: 2rem;
+        letter-spacing: 3px;
+        font-family: "shrikhand";
+        animation: Brillante 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+
+        @keyframes Brillante {
+            0%{
+                color: $violet;
+                text-shadow: 0 0 7px $violet;
+                
+
+            }
+            90% {
+                color: darken($color: $violet, $amount: 25);
+                text-shadow: none; 
+            }
+            100%{
+
+                color: $violet;
+                text-shadow: 0 0 7px $violet;
+            }
+        }
+    }
+    
+
+}
+
 .center-pad{
     @extend %centre-pad;
 }
-
 
 /*containeur génerale*/
 #container {
@@ -86,6 +158,8 @@ $border25: 25px;
         "footer";
 
 }
+
+
 
 .header {
     grid-area: header;
@@ -142,7 +216,12 @@ $border25: 25px;
     }
 
     &__btn{
-        @include btn;        
+        @include btn;
+        @extend %background-violet-gradiant;
+        @include form-container($min-w: 220px,$h: 50px);
+        color: white;
+        overflow: hidden;
+
     }
 
 }
@@ -161,11 +240,10 @@ $border25: 25px;
 
     &__step {
         @include form-container($min-w: 300px,$w:100%, $h:70px, $pad:0px);
+        @include btn;
         position: relative;
         @extend %center-element;
         justify-content: flex-start;
-        box-shadow: $shadow-div;
-        border-radius: $border25;
         margin-bottom: 30px;
         z-index: 1;
 
@@ -179,7 +257,6 @@ $border25: 25px;
 
                 color: $violet;
             }
-        
         }
 
         &::after {
@@ -212,10 +289,10 @@ $border25: 25px;
         &__icon {
             color: $color-icon;
             margin-left: 30px;
-            z-index: -1;
-        }
+            z-index: 1;
 
-        
+        }
+    
 
         &__describes {
             margin-left: 25px;
@@ -242,24 +319,67 @@ $border25: 25px;
 
     &__containeur {
         @extend %center-element;
-
         @include form-container($w:300px, $min-w:100%, $pad:0px, $h:250px);
         box-shadow: $shadow-div;
         border-radius: $border25;
         overflow: hidden;
         position: relative;
+        z-index: 1;
+
         
         &__img {
             object-fit: cover;
             width: 100%;
             height: 100%;
+            z-index: 1;
+            
+        }
 
+        
+        &:nth-child(2){
+
+            &::before {
+                content: "Nouveau";
+                position: absolute;
+                right: 12px;
+                top: 13px;
+                box-shadow: 0px 4px 8px 1px black;
+                border-radius: 2px;
+                color: #008766;
+                background-color: #99e2d0;
+                font-size: 0.9rem;
+                width: 80px;
+                height: 30px;
+                @extend %center-element;
+                z-index: 2;
+            }
+        }
+        
+        
+        &:nth-child(3){
+
+            &::before {
+                content: "Nouveau";
+                position: absolute;
+                right: 12px;
+                top: 13px;
+                box-shadow: 0px 2px 8px -5px black;
+                color: #008766;
+                background-color: #99e2d0;
+                font-size: 0.9rem;
+                width: 80px;
+                height: 30px;
+                @extend %center-element;
+                z-index: 2;
+            }
         }
 
         &:nth-child(2) > .reslt-restaurant__containeur__img {
             object-position: -63px -56px;
-
+            
         }
+
+       
 
         &:nth-child(3) > .reslt-restaurant__containeur__img {
             object-position: 0px -136px;
@@ -275,49 +395,60 @@ $border25: 25px;
             object-position: -20px -72px;
         }
 
-
         &__describes {
             display: flex;
             position: absolute;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
             width: 100%;
             bottom: 0px;
             height: 75px;
             background-color: white;
-            :active{
+            z-index: 2;
+            & > p {
+                padding-left: 20px;
+                font-weight: 300;
+                line-height: 25px;
 
-                &::after{
-                    opacity: 1;
+                & > em {
+                    font-style: normal;
+                    font-weight: 900;
                 }
             }
-
-            &::before {
-                font-family: 'Font Awesome 5 Free';
-                content: "\f004";
-                position: absolute;
-                width: 20px;
-                right: 20px;
+            & > .fa-heart {
+                padding-right: 20px;
                 font-size: 20px;
-                font-style: solid;
+                position: relative;
+                
+                
+                &:hover{
+                    
+                    &::after{
+                        opacity: 1;
+                        animation-name: animation-heart;
+                        animation-duration: 150ms;
+                        
+                    }
+                    
+                }
+                
+                &::after {
+                    content: "\f004";
+                    position: absolute;
+                    @extend %background-violet-gradiant;
+                    font-weight: 900;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    font-size: 25px;
+                    opacity: 0;
+                    top: -2px;
+                    bottom: -12px;
+                    left: -2px;
+                    right: 0px;
+                    
+                }
             }
-
-
-            &::after {
-
-                font-family: 'Font Awesome 5 Free';
-                content: "\f004";
-                position: absolute;
-                color: red;
-                opacity: 0;
-                width: 20px;
-                right: 20px;
-                font-size: 20px;
-                font-weight: 900;
-
-            }
-            
-
+ 
         }
 
 
@@ -335,7 +466,27 @@ $border25: 25px;
     
 }
 
-footer {
+.footer {
     grid-area: footer;
-    background-color: maroon;
+    background-color: #353535;
+    @extend %center-element;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 25px;
+    &__logo {
+        color: white;
+        width: 100px;
+        font-family: "Shrikhand";
+    }
+
+    &__containt {
+        color:white;
+        text-decoration: none;
+        &__icon {
+            padding-right: 10px;
+        }
+
+    }
+    
 }
