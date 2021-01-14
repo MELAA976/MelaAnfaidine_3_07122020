@@ -20,6 +20,8 @@ $border25: 25px;
 
 /*centrer les elements avec le padding*/
 %centre-pad {
+    display: flex;
+    flex-direction: column;
     padding:0px 20px 0px 20px;
 }
 /*ombre porter pour les divs*/
@@ -28,13 +30,50 @@ $border25: 25px;
     background: linear-gradient(180deg, adjust-hue($violet, 40deg),$violet);
 }
 
+/*le header*/
+
+%header {
+    grid-area: header;
+    @extend %center-element;
+    z-index: 2;
+    box-shadow: 0px 3px 4px #d5d5d5;
+    
+}
+
+
 
 /*les mixins*/
 
+/*le footer*/
+@mixin footer {
+    grid-area: footer;
+    background-color: #353535;
+    @extend %center-element;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 25px;
+    &__logo {
+        color: white;
+        width: 100px;
+        font-family: "Shrikhand";
+    }
+
+    &__containt {
+        color:white;
+        text-decoration: none;
+        &__icon {
+            padding-right: 10px;
+            width: 20px;
+        }
+
+    }
+    
+}
+
 /*forme carre*/
-@mixin form-container($min-w:100%, $w: auto, $h:0px, $pad: 5px){
+@mixin form-container($min-w:100%, $h:0px, $pad: 5px){
     min-width:$min-w;
-    max-width: $w;
     height: $h;
     padding: $pad;
     
@@ -76,10 +115,46 @@ $border25: 25px;
         
     }
 }
+/*les coeurs*/
+@mixin heart {
+    padding-right: 20px;
+    font-size: 20px;
+    position: relative;
+    
+    
+    &:hover{
+        
+        &::after{
+            opacity: 1;
+            animation-name: animation-heart;
+            animation-duration: 150ms;
+            
+        }
+        
+    }
+    
+    &::after {
+        content: "\f004";
+        position: absolute;
+        @extend %background-violet-gradiant;
+        font-weight: 900;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 25px;
+        opacity: 0;
+        top: -2px;
+        bottom: -12px;
+        left: -2px;
+        right: 0px;
+    }
+}
 
-/**Les keyframe*/
+
+
+/*Les keyframe*/
 /*Animation du coeur*/
-@keyframes animation-heart{
+@keyframes animation-heart {
     0% {
         transform: scale(1);
     }
@@ -94,6 +169,8 @@ $border25: 25px;
 }
 
 
+
+
 /*Géneral*/
 
 *{
@@ -104,15 +181,23 @@ $border25: 25px;
 
 
 .loader {
-
     position: absolute;
-    display: none;
     width: 100%;
     height: 100%;
     @extend %center-element;
     background-color: white;
     color: darken($color: $violet, $amount: 25);
+    visibility: hidden;
+    animation: loading 3s linear 1;
     z-index: 3;
+    @keyframes loading {
+        0%{visibility: visible;
+        position: fixed;}
+        90%{visibility: visible;
+        position: fixed;}
+        100%{ visibility: hidden;}    
+    }
+
     &__lettre {
         font-size: 2rem;
         letter-spacing: 3px;
@@ -124,7 +209,6 @@ $border25: 25px;
                 color: $violet;
                 text-shadow: 0 0 7px $violet;
                 
-
             }
             90% {
                 color: darken($color: $violet, $amount: 25);
@@ -136,11 +220,24 @@ $border25: 25px;
                 text-shadow: 0 0 7px $violet;
             }
         }
+
     }
     
-
 }
 
+body{
+
+    animation: visible-body 3s linear 1;
+    @keyframes visible-body {
+        0%{visibility: hidden;
+        height: 40px;
+        overflow: hidden;}
+        99%{visibility: hidden;
+        height: 40px;
+         overflow: hidden;}
+        100%{visibility: visible;} 
+    }
+}
 .center-pad{
     @extend %centre-pad;
 }
@@ -160,16 +257,11 @@ $border25: 25px;
 }
 
 
-
 .header {
-    grid-area: header;
-    @extend %center-element;
-    z-index: 2;
-    box-shadow: 0px 3px 4px #d5d5d5;
+    @extend %header;
     &__logo {
         width: 50%;
     }
-    
 }
 
 
@@ -192,12 +284,15 @@ $border25: 25px;
         align-items: center;
 
         &__location{
-            width: 150px;
+            
             display: flex;
+            width: 150px;
             justify-content: space-around;
-
+            color: $clrs-txt-grey;
+            
             &__ville {
                 color: $clrs-txt-grey;
+                
             }
         }
     }
@@ -211,7 +306,7 @@ $border25: 25px;
         width: 310px;
         text-align: center;
         font-weight: 300;
-        padding: 20px;
+        padding: 20px 0 20px 0;
 
     }
 
@@ -239,7 +334,7 @@ $border25: 25px;
     }
 
     &__step {
-        @include form-container($min-w: 300px,$w:100%, $h:70px, $pad:0px);
+        @include form-container($h:70px, $pad:0px);
         @include btn;
         position: relative;
         @extend %center-element;
@@ -319,20 +414,51 @@ $border25: 25px;
 
     &__containeur {
         @extend %center-element;
-        @include form-container($w:300px, $min-w:100%, $pad:0px, $h:250px);
+        @include form-container($min-w:100%, $pad:0px, $h:250px);
         box-shadow: $shadow-div;
         border-radius: $border25;
         overflow: hidden;
         position: relative;
         z-index: 1;
 
-        
-        &__img {
-            object-fit: cover;
-            width: 100%;
+        &__lien {
+            display: flex;
+            width: auto;
             height: 100%;
-            z-index: 1;
+    
+            & > img {
             
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                
+            }
+
+            
+
+            
+        }
+
+        &:nth-child(2) > .reslt-restaurant__containeur__lien > img{
+            object-position: -56px -53px;
+            
+        }
+
+       
+
+        &:nth-child(3) > .reslt-restaurant__containeur__lien > img {
+            object-position: 0px -109px;
+
+        }
+
+        &:nth-child(4) > .reslt-restaurant__containeur__lien > img {
+            object-position: -20px -72px;
+
+        }
+
+        &:nth-child(5) > .reslt-restaurant__containeur__lien > img {
+            object-position: -25px -72px;
         }
 
         
@@ -374,26 +500,7 @@ $border25: 25px;
             }
         }
 
-        &:nth-child(2) > .reslt-restaurant__containeur__img {
-            object-position: -63px -56px;
-            
-        }
-
-       
-
-        &:nth-child(3) > .reslt-restaurant__containeur__img {
-            object-position: 0px -136px;
-
-        }
-
-        &:nth-child(4) > .reslt-restaurant__containeur__img {
-            object-position: -20px -72px;
-
-        }
-
-        &:nth-child(5) > .reslt-restaurant__containeur__img {
-            object-position: -20px -72px;
-        }
+        
 
         &__describes {
             display: flex;
@@ -416,38 +523,10 @@ $border25: 25px;
                 }
             }
             & > .fa-heart {
-                padding-right: 20px;
-                font-size: 20px;
-                position: relative;
-                
-                
-                &:hover{
-                    
-                    &::after{
-                        opacity: 1;
-                        animation-name: animation-heart;
-                        animation-duration: 150ms;
-                        
-                    }
-                    
-                }
-                
-                &::after {
-                    content: "\f004";
-                    position: absolute;
-                    @extend %background-violet-gradiant;
-                    font-weight: 900;
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    font-size: 25px;
-                    opacity: 0;
-                    top: -2px;
-                    bottom: -12px;
-                    left: -2px;
-                    right: 0px;
-                    
-                }
+                @include heart;
+            
             }
+            
  
         }
 
@@ -467,26 +546,96 @@ $border25: 25px;
 }
 
 .footer {
-    grid-area: footer;
-    background-color: #353535;
-    @extend %center-element;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    padding: 25px;
-    &__logo {
-        color: white;
-        width: 100px;
-        font-family: "Shrikhand";
-    }
 
-    &__containt {
-        color:white;
-        text-decoration: none;
-        &__icon {
-            padding-right: 10px;
-        }
-
-    }
-    
+    @include footer;
 }
+
+/*Les menues*/
+/*containeur générale*/
+#container--menue{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 65px 1415px 200px;
+    grid-template-areas: 
+        "header"
+        "menue"
+        "footer";
+}
+
+
+
+.header--menue{
+
+    @extend %header;
+    box-shadow: 0px 3px 4px #3a3942;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    &__logo {
+        width: 50%;
+    }
+
+    &__lien {
+        position: absolute;
+        left: 15px;
+        top:20px;
+
+        & > .fas {
+            font-size: 20px;
+            color: #353535;
+        }
+    }    
+
+}
+
+.menue {
+
+    grid-area: menue;
+    position: relative;
+    &__img > img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__liste{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        top: 170px;
+        right: 0px;
+        left: 0px;
+        border-radius: 30px 30px 0 0;
+        padding-top: 45px;
+        background-color: $clrs-bck-grnd-grey;
+
+        &__title-heart {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            &__title {
+                font-family: "Shrikhand";
+            }
+
+            & > .far{
+                @include heart;
+            }
+
+        }
+        
+
+        
+    }
+
+}
+
+.footer {
+    @include footer;
+    z-index: 1;
+}
+
+
+
