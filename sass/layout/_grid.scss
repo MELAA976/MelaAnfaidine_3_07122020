@@ -1,0 +1,24 @@
+/*containeur génerale*/
+#container {
+    animation: visible-body 2s linear 1;
+    @keyframes visible-body {
+        0%{visibility: hidden;
+        height: 40px;
+        overflow: hidden;}
+        99%{visibility: hidden;
+        height: 40px;
+         overflow: hidden;}
+        100%{visibility: visible;} 
+    }
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 65px 340px 440px 1230px 200px;
+    grid-template-areas: 
+        "header"
+        "nav"
+        "foctio"
+        "resto"
+        "footer";
+
+}

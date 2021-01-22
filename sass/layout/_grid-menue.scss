@@ -1,0 +1,10 @@
+/*containeur générale*/
+#container--menue{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 65px 1415px 200px;
+    grid-template-areas: 
+        "header"
+        "menue"
+        "footer-menue";
+}

@@ -1,0 +1,5 @@
+.footer--menue {
+    grid-area: footer-menue;
+    @include footer;
+    z-index: 1;
+}

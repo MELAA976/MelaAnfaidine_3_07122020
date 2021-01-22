@@ -1,0 +1,253 @@
+/*les mixins*/
+/*le footer*/
+@mixin footer {
+    
+    background-color: #353535;
+    @extend %center-element;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 25px;
+    &__logo {
+        color: white;
+        width: 100px;
+        font-family: "Shrikhand";
+    }
+
+    &__containt {
+        color:white;
+        text-decoration: none;
+        &__icon {
+            padding-right: 10px;
+            width: 20px;
+        }
+
+    }
+    
+}
+
+/*forme carre*/
+@mixin form-container($h:0px, $pad: 5px){
+    height: $h;
+    padding: $pad;
+    
+}
+
+/*mixin pour les bouton violet*/
+@mixin btn {
+    font-weight: bold;
+    border-radius: $border25;
+    height: 70px;
+    border: none;
+    box-shadow: 0px 4px 8px 1px #d5d5d5;
+    outline: none;
+    z-index: 1;
+    transform: scale(1);
+    transition: transform 50ms;
+    transition-timing-function: ease-in;
+    transition-delay: 50ms;
+    
+    &:active{
+        &::after {
+            opacity: 1;
+        }
+
+        transform: scale(1.03);
+        box-shadow: 0px 4px 10px 4px #d5d5d5;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        opacity: 0;
+        background-color: lighten($violet, 15%);
+        z-index: -1;
+        transition: all 150ms;
+        
+    }
+}
+
+
+/*les coeurs*/
+@mixin heart {
+    padding-right: 20px;
+    font-size: 20px;
+    position: relative;
+    
+    
+    &:hover{
+        
+        &::after{
+            opacity: 1;
+            animation-name: animation-heart;
+            animation-duration: 150ms;
+            @keyframes animation-heart {
+                0% {
+                    transform: scale(1);
+                }
+            
+                50%{
+                    transform: scale(1.15);
+                }
+            
+                100%{
+                    transform: scale(1);
+                }
+            }
+            
+        }
+        
+    }
+    
+    &::after {
+        content: "\f004";
+        position: absolute;
+        @extend %background-violet-gradiant;
+        font-weight: 900;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 25px;
+        opacity: 0;
+        top: -2px;
+        bottom: -12px;
+        left: -2px;
+        right: 0px;
+    }
+}
+
+/*les tires surligné en vert */
+@mixin highlighted-text-green {
+    font-weight: 300;
+    position: relative;
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 25px;
+        height: 3px;
+        width: 45px;
+        background-color: #99e2d0;
+    }
+}
+
+/*les contenues*/
+@mixin containt {
+    @extend %center-element;
+    background-color: white;
+    @include form-container(70px, 0px);
+    box-shadow: 0px 4px 8px 1px #e9e9e9;
+    border-radius: 15px;
+    width: 100%;
+    overflow: hidden;
+}
+
+/*selection de plats */
+@mixin choise_check {
+    &__check {
+        position: relative;
+        height: 100%;
+        width: 90px;
+        margin-right:-90px; 
+        @extend %center-element;
+        background-color: #99e2d0;
+        transition: margin-right linear 500ms;
+        &::after {                     
+            content: "\f058";
+            font-family: "Font Awesome 5 Free";
+            font-size: 25px;
+            color: white;
+                                 
+        }                   
+    }
+}
+
+/*animation selection de plats*/
+@mixin choise_check_hover {
+    margin-right: 0px;
+    &::after {
+        animation: rotation-cercle 500ms ease-in 1;
+        @keyframes rotation-cercle {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+}
+
+/*les noms et les prix des plats*/
+@mixin name-prix {
+    &__name-prix {
+    @extend %center-element;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    padding-right: 15px;
+
+        &__name {
+            padding: 0px 20px 0px 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            & > em {
+                font-weight: bold;
+                font-style: normal;    
+            }                        
+        }
+        
+        &__prix {
+            font-weight: 900;
+            align-self: flex-end;
+            padding-bottom: 10px;
+            width: 30px;                   
+        }
+        
+    }
+}
+/*gabarie des containneur des listes menues*/
+@mixin tamplete-name-menue {
+    @extend %center-element;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 100%;
+    height: 300px;
+    &__title {
+        @include highlighted-text-green;
+    }
+}
+
+/*mediaqueries*/
+@mixin respond-to($breakpoint) {
+
+    @if $breakpoint == "very-small" {
+      @media (min-width: 360px) {
+        @content;
+      }
+    }
+  
+    @else if $breakpoint == "small" {
+      @media (min-width: 875px) {
+        @content;
+      }
+    }
+  
+    @else if $breakpoint == "medium" {
+      @media (min-width: 930px) {
+        @content;
+      }
+    }
+  
+    @else if $breakpoint == "large" {
+      @media (min-width: 1430px) {
+        @content;
+      }
+    }
+  }

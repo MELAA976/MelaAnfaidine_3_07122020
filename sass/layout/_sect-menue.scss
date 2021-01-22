@@ -1,0 +1,96 @@
+.menue {
+
+    grid-area: menue;
+    position: relative;
+    display: flex;
+    &__img > img {
+        object-fit: cover;
+        width: 100%;
+    }
+
+    &__liste{
+        position: absolute;
+        @extend %center-element;
+        @extend %centre-pad;
+        flex-direction: column;
+        justify-content: space-evenly;
+        top: 170px;
+        right: 0px;
+        left: 0px;
+        bottom: 0px;
+        border-radius: 30px 30px 0 0;
+        background-color: $clrs-bck-grnd-grey;
+    
+        &__title-heart {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            &__title {
+                font-family: "Shrikhand";
+            }
+
+            & > .far{
+                @include heart;
+            }
+        }
+
+        &__entrees {
+            @include tamplete-name-menue;
+
+            &__containts {
+                @include containt;
+                @include choise_check;
+
+                &:hover .menue__liste__entrees__containts__check {
+                    @include choise_check_hover;
+                }
+                @include name-prix;
+            }
+        
+        
+        
+        }
+
+        &__plats{
+            @include tamplete-name-menue;
+
+            &__containts {
+                @include containt;
+                @include choise_check;
+                &:hover .menue__liste__plats__containts__check {
+                    
+                    @include choise_check_hover;
+                }
+                @include name-prix;
+            }
+           
+        }
+
+        &__dessert{
+            @include tamplete-name-menue;
+
+            &__containts {
+                @include containt;
+                @include choise_check;
+                &:hover .menue__liste__dessert__containts__check {
+                    
+                    @include choise_check_hover;
+                }
+                @include name-prix;
+            }
+           
+        }
+
+        &__btn {
+            @include btn;
+            @extend %background-violet-gradiant;
+            @include form-container($h: 50px);
+            min-width: 220px;
+            color: white;
+            overflow: hidden;
+        }
+    }
+
+}

@@ -1,0 +1,43 @@
+.loader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    @extend %center-element;
+    background-color: white;
+    color: darken($color: $violet, $amount: 25);
+    visibility: hidden;
+    animation: loading 3s linear 1;
+    z-index: 3;
+    @keyframes loading {
+        0%{visibility: visible;
+        position: fixed;}
+        90%{visibility: visible;
+        position: fixed;}
+        100%{ visibility: hidden;}    
+    }
+    &__lettre {
+        font-size: 2rem;
+        letter-spacing: 3px;
+        font-family: "shrikhand";
+        animation: Brillante 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+
+        @keyframes Brillante {
+            0%{
+                color: $violet;
+                text-shadow: 0 0 7px $violet;
+                
+            }
+            90% {
+                color: darken($color: $violet, $amount: 25);
+                text-shadow: none; 
+            }
+            100%{
+
+                color: $violet;
+                text-shadow: 0 0 7px $violet;
+            }
+        }
+
+    }
+    
+}

@@ -1,0 +1,150 @@
+.reslt-restaurant {
+    grid-area: resto;
+    background-color: $clrs-bck-grnd-grey;
+    @extend %center-element;
+    flex-direction: column;
+    justify-content: space-around;
+    @extend %centre-pad;
+    align-items: flex-start;
+    @include respond-to(very-small) {
+        align-items: center;
+    }
+    
+    &__title {
+        text-align: start;
+    }
+
+    &__containeur {
+        @extend %center-element;
+        @include form-container($pad:0px, $h:250px);
+        width: 100%;
+        box-shadow: $shadow-div;
+        border-radius: $border25;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+
+        &__lien {
+            display: flex;
+            width: auto;
+            height: 100%;
+    
+            & > img {
+            
+                object-fit: cover;
+                width: 100%;
+                
+                z-index: 1;
+                
+            }
+ 
+        }
+
+        &:nth-child(2) > .reslt-restaurant__containeur__lien > img{
+            object-position: -56px -53px;
+            @include respond-to(very-small) {
+                align-items: center;
+                object-position: 0px -75px;
+            }
+            
+        }
+
+
+        &:nth-child(3) > .reslt-restaurant__containeur__lien > img {
+            object-position: 0px -109px;
+            @include respond-to(very-small) {
+                align-items: center;
+                object-position: 0px -204px;
+            }
+
+        }
+
+        &:nth-child(4) > .reslt-restaurant__containeur__lien > img {
+            object-position: -20px -72px;
+            @include respond-to(very-small) {
+                align-items: center;
+                object-position: 0px -75px;
+            }
+
+        }
+
+        &:nth-child(5) > .reslt-restaurant__containeur__lien > img {
+            object-position: -25px -72px;
+            @include respond-to(very-small) {
+                align-items: center;
+                object-position: 0px -76px;
+            }
+        }
+
+        
+        &:nth-child(2){
+
+            &::before {
+                content: "Nouveau";
+                position: absolute;
+                right: 12px;
+                top: 13px;
+                box-shadow: 0px 4px 8px 1px black;
+                border-radius: 2px;
+                color: #008766;
+                background-color: #99e2d0;
+                font-size: 0.9rem;
+                width: 80px;
+                height: 30px;
+                @extend %center-element;
+                z-index: 2;
+            }
+        }
+        
+        
+        &:nth-child(3){
+
+            &::before {
+                content: "Nouveau";
+                position: absolute;
+                right: 12px;
+                top: 13px;
+                box-shadow: 0px 2px 8px -5px black;
+                color: #008766;
+                background-color: #99e2d0;
+                font-size: 0.9rem;
+                width: 80px;
+                height: 30px;
+                @extend %center-element;
+                z-index: 2;
+            }
+        }
+
+        
+
+        &__describes {
+            display: flex;
+            position: absolute;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            bottom: 0px;
+            height: 75px;
+            background-color: white;
+            z-index: 2;
+            & > p {
+                padding-left: 20px;
+                font-weight: 300;
+                line-height: 25px;
+
+                & > em {
+                    font-style: normal;
+                    font-weight: 900;
+                }
+            }
+            & > .fa-heart {
+                @include heart;
+            
+            }
+            
+ 
+        }
+
+    }
+    
+}
