@@ -1,5 +1,5 @@
+/*composition de menues dans les pages des réstaurants*/
 .menue {
-
     grid-area: menue;
     position: relative;
     display: flex;
@@ -20,69 +20,90 @@
         bottom: 0px;
         border-radius: 30px 30px 0 0;
         background-color: $clrs-bck-grnd-grey;
-    
+        
+            /*le titre et le coeur de la page*/
         &__title-heart {
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: 100%;
+            @include respond-to(small) {
+                width: 40%;
+            }
 
+            @include respond-to(large) {
+                width: 25%;
+            }
+            /*le titre*/
             &__title {
                 font-family: "Shrikhand";
             }
-
+            /*le coeur*/
             & > .far{
                 @include heart;
             }
         }
 
-        &__entrees {
-            @include tamplete-name-menue;
-
-            &__containts {
-                @include containt;
-                @include choise_check;
-
-                &:hover .menue__liste__entrees__containts__check {
-                    @include choise_check_hover;
-                }
-                @include name-prix;
+        &__containneur{
+            width: 100%;
+            max-width: 600px;
+            
+            @include respond-to(large) {
+                max-width: none;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                column-gap: 40px;
+                grid-template-rows: 1fr;
+                
+                
             }
-        
-        
-        
-        }
-
-        &__plats{
-            @include tamplete-name-menue;
-
-            &__containts {
-                @include containt;
-                @include choise_check;
-                &:hover .menue__liste__plats__containts__check {
-                    
-                    @include choise_check_hover;
+            /*les entrées*/
+            &__entrees {
+                animation: fadein 1s;
+                @include tamplete-name-menue;
+                &__containts {
+                    @include containt;
+                    @include choise_check;
+                    &:hover .menue__liste__containneur__entrees__containts__check {
+                        @include choise_check_hover;
+                    }
+                    @include name-prix;
                 }
-                @include name-prix;
+            
             }
-           
-        }
-
-        &__dessert{
-            @include tamplete-name-menue;
-
-            &__containts {
-                @include containt;
-                @include choise_check;
-                &:hover .menue__liste__dessert__containts__check {
-                    
-                    @include choise_check_hover;
+            /*les plats*/
+            &__plats{
+                animation: fadein 2s;
+                @include tamplete-name-menue;
+                &__containts {
+                    @include containt;
+                    @include choise_check;
+                    &:hover .menue__liste__containneur__plats__containts__check {
+                        
+                        @include choise_check_hover;
+                    }
+                    @include name-prix;
                 }
-                @include name-prix;
+               
             }
-           
-        }
+            /*les dessert*/
+            &__dessert{
+                animation: fadein 3s;
+                @include tamplete-name-menue;
+                &__containts {
+                    @include containt;
+                    @include choise_check;
+                    &:hover .menue__liste__containneur__dessert__containts__check {
+                        
+                        @include choise_check_hover;
+                    }
+                    @include name-prix;
+                }
+               
+            }
 
+        }       
+        /*le bouton pour commander*/
         &__btn {
             @include btn;
             @extend %background-violet-gradiant;
@@ -90,6 +111,9 @@
             min-width: 220px;
             color: white;
             overflow: hidden;
+            @include respond-to(very-small) {
+                font-size: 1rem;
+            }
         }
     }
 

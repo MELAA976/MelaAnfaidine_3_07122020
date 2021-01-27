@@ -1,8 +1,11 @@
-
+/*le header de la page d'acceuil*/
 .header {
     grid-area: header;
     @extend %header;
     &__logo {
-        width: 13rem;
+        width: 10rem;
+        @include respond-to(small) {
+            width: 13rem;
+        }
     }
 }

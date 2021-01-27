@@ -1,4 +1,4 @@
-/*containeur génerale*/
+/*containeur génerale de la page d'acceuil*/
 #container {
     animation: visible-body 2s linear 1;
     @keyframes visible-body {
@@ -20,5 +20,18 @@
         "foctio"
         "resto"
         "footer";
+    
+    @include respond-to(small) {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 65px 290px 290px 700px 200px;
+        grid-template-areas: 
+            "header"
+            "nav"
+            "foctio"
+            "resto"
+            "footer"
+        ;  
+    }
 
 }

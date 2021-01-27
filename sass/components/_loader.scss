@@ -1,3 +1,4 @@
+/*le chargement de la page d'acceuil*/
 .loader {
     position: absolute;
     width: 100%;
@@ -6,7 +7,7 @@
     background-color: white;
     color: darken($color: $violet, $amount: 25);
     visibility: hidden;
-    animation: loading 3s linear 1;
+    animation: loading 2s linear 1;
     z-index: 3;
     @keyframes loading {
         0%{visibility: visible;

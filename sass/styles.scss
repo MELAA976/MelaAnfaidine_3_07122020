@@ -1,32 +1,26 @@
-/*Les keyframe*/
-/*Animation du coeur*/
-
-.center-pad {
-    @extend %centre-pad;
-}
 
 @import
-  'abstracts/variables',
-  'abstracts/placeholders',
-  'abstracts/mixins';
+'abstracts/variables',
+'abstracts/placeholders',
+'abstracts/mixins';
 
 
 @import
-    'components/loader';
+  'components/loader';
 
 @import
-    'base/typography',
-    'base/pad-marg';
+  'base/typography',
+  'base/pad-marg';
 
 
- @import 
-    'layout/grid',
-    'layout/header',
-    'layout/navigation',
-    'layout/sect-operation',
-    'layout/sect-restaurant',
-    'layout/footer',
-    'layout/grid-menue',
-    'layout/header-menue',
-    'layout/sect-menue',
-    'layout/footer-menue';
+@import 
+  'layout/grid',
+  'layout/header',
+  'layout/navigation',
+  'layout/sect-operation',
+  'layout/sect-restaurant',
+  'layout/footer',
+  'layout/grid-menue',
+  'layout/header-menue',
+  'layout/sect-menue',
+  'layout/footer-menue';

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="sass/styles.css" rel="stylesheet">
+        <link href="../sass/styles.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -11,29 +11,198 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <script src="https://kit.fontawesome.com/c7e66ba1c6.js" crossorigin="anonymous"></script>
 
-        <title>À la française</title>
+        <title>La palette du gôut</title>
     </head>
 
-    <div class = "loader">
-
-        <span class="loader__lettre">o</span>
-        <span class="loader__lettre">h</span>
-        <span class="loader__lettre">m</span>
-        <span class="loader__lettre">y</span>
-        <span class="loader__lettre">f</span>
-        <span class="loader__lettre">o</span>
-        <span class="loader__lettre">o</span>
-        <span class="loader__lettre">d</span>
-        
-    </div>
-    
     <body>
-        <div id="container">
-            <header class = "header">
+    
+        <div id="container--menue">
+
+            <header class = "header--menue">
                 <!--logo du site-->
-                <img src="/images/logo/ohmyfood@2x.svg" alt = "logo-ohmyfood" class = "header__logo">
+                <a href="/index.html" class = "header--menue__lien"><i class="fas fa-arrow-left header__icone"></i></a>
+                <img src="/images/logo/ohmyfood@2x.svg" alt = "logo-ohmyfood" class = "header--menue__logo">
+                
+            </header>
+
+            
+            <!--section des menues-->
+            <section class="menue">
+                <!--image du menues-1-->
+                <div class="menue__img">
+                    <img src="/images/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg" 
+                    alt="image-du-La-palette-du-goût">
+                </div>
+
+                <!--liste du menue-->
+                <div class = "menue__liste">
+                    <!--le nom du menues-1-->
+                    <div class = "menue__liste__title-heart">
+                        <h2 class = "menue__liste__title-heart__title">La palette du goût</h2>
+                        <i class="far fa-heart"></i>
+
+                    </div>
+
+                    <div class = "menue__liste__containneur">
+
+                        <!--les entrees-->
+                        <div class = "menue__liste__containneur__entrees">
+
+                            <h3 class = "menue__liste__containneur__entrees__title">ENTRÉES</h3>
+                            <!--entrer-1-->
+                            <div class = "menue__liste__containneur__entrees__containts">
+                                <div class = "menue__liste__containneur__entrees__containts__name-prix">
+                                <p class = "menue__liste__containneur__entrees__containts__name-prix__name">
+                                    <em>Fricassée d'escargot</em><br/>
+                                    Au piment d'Espelette
+                                </p>
+                                <p class = "menue__liste__containneur__entrees__containts__name-prix__prix">25€</p>
+
+                                </div>
+                                <div class = "menue__liste__containneur__entrees__containts__check"></div>
+
+                            </div>
+                            <!--entrer-2-->
+                            <div class = "menue__liste__containneur__entrees__containts">
+                                <div class = "menue__liste__containneur__entrees__containts__name-prix">
+                                    <p class = "menue__liste__containneur__entrees__containts__name-prix__name">
+                                        <em>Foie gras de canard mi-cuit</em><br/>
+                                        Et ses copeaux de truffe noire
+                                    </p>
+
+                                    <p class = "menue__liste__containneur__entrees__containts__name-prix__prix">35€</p>
+
+                                    
+                                </div>
+                                <div class = "menue__liste__containneur__entrees__containts__check"></div>
+
+                            </div>
+                            <!--entrer-3-->
+                            <div class = "menue__liste__containneur__entrees__containts">
+                                <div class = "menue__liste__containneur__entrees__containts__name-prix">
+                                    <p class = "menue__liste__containneur__entrees__containts__name-prix__name">
+                                        <em>Oeuf au plat</em><br/>
+                                        Assaisonné à la truffe sur lit de caviar
+                                    </p>
+
+                                    <p class = "menue__liste__containneur__entrees__containts__name-prix__prix">20€</p>
+                                </div>
+                                <div class = "menue__liste__containneur__entrees__containts__check"></div>
+                            </div>
+                        </div>
+                            
+                        
+                        <!--les plats-->
+                        <div class = "menue__liste__containneur__plats">
+                            <h3 class = "menue__liste__containneur__plats__title">PLATS</h3>
+                            <!--plat-1-->
+                            <div class = "menue__liste__containneur__plats__containts">
+                                <div class = "menue__liste__containneur__plats__containts__name-prix">
+                                    <p class = "menue__liste__containneur__plats__containts__name-prix__name">
+                                        <em>Filet de boeuf aux herbes</em><br/>
+                                        Accompagné de sa ribambelle de légumes
+                                    </p>
+
+                                    <p class = "menue__liste__containneur__plats__containts__name-prix__prix">40€</p>
+                                    
+                                </div>
+
+                                <div class = "menue__liste__containneur__plats__containts__check"></div>
+                            </div>
+                            <!--plat-2-->
+                            <div class = "menue__liste__containneur__plats__containts">
+                                <div class = "menue__liste__containneur__plats__containts__name-prix">
+                                    <p class = "menue__liste__containneur__plats__containts__name-prix__name">
+                                        <em>Parmentier de queue de boeuf</em><br/>
+                                        À la truffe noire sur sa purée de panais</p>
+
+                                    <p class = "menue__liste__containneur__plats__containts__name-prix__prix">35€</p>
+                                </div>
+                                <div class = "menue__liste__containneur__plats__containts__check"></div>
+
+                            </div>
+                            <!--plat-3-->
+                            <div class = "menue__liste__containneur__plats__containts">
+                                <div class = "menue__liste__containneur__plats__containts__name-prix">
+                                    <p class = "menue__liste__containneur__plats__containts__name-prix__name">
+                                        <em>Filet de turbot</em><br/>
+                                        Aux agrumes
+                                    </p>
+
+                                    <p class = "menue__liste__containneur__plats__containts__name-prix__prix">44€</p>
+                                </div>
+                                <div class = "menue__liste__containneur__plats__containts__check"></div>
+                            </div>
+
+                        </div>
+
+                        <!--les dessert-->
+                        <div class = "menue__liste__containneur__dessert">
+                            
+                            <h3 class = "menue__liste__containneur__dessert__title">DESSERTS</h3>
+                            <!--les dessert-1-->
+                            <div class = "menue__liste__containneur__dessert__containts">
+                                <div class = "menue__liste__containneur__dessert__containts__name-prix">
+                                    <p class = "menue__liste__containneur__dessert__containts__name-prix__name">
+                                        <em>Paris-Brest</em><br/>
+                                        Revisité
+                                    </p>
+
+                                    <p class = "menue__liste__containneur__dessert__containts__name-prix__prix">18€</p>
+                                </div>
+
+                                <div class = "menue__liste__containneur__dessert__containts__check"></div>
+                            </div>
+                            <!--les dessert-2-->
+                            <div class = "menue__liste__containneur__dessert__containts">
+                                <div class = "menue__liste__containneur__dessert__containts__name-prix">
+                                    <p class = "menue__liste__containneur__dessert__containts__name-prix__name">
+                                        <em>Macaron au chocolat d'exception </em><br/>
+                                        Et glace à la vanille de Madagascar
+                                    </p>
+
+                                    <p class = "menue__liste__containneur__dessert__containts__name-prix__prix">22€</p>
+                                </div>
+                                <div class = "menue__liste__containneur__dessert__containts__check"></div>
+                            </div>
+                            <!--les dessert-3-->
+                            <div class = "menue__liste__containneur__dessert__containts">
+                                <div class = "menue__liste__containneur__dessert__containts__name-prix">
+                                    <p class = "menue__liste__containneur__dessert__containts__name-prix__name">
+                                        <em>Mousse au chocolat</em><br/>
+                                        Au piment d'Espelette et à la truffe noire
+                                    </p>
+                                    <p class = "menue__liste__containneur__dessert__containts__name-prix__prix">23€</p>
+                                </div>
+                                <div class = "menue__liste__containneur__dessert__containts__check"></div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!--boutton commande-->
+                    <button class = "menue__liste__btn">Commander</button>
+            
+                </div>
+
+            </section>
+
+            <footer class = "footer--menue">
+
+                <h2 class = "footer__logo">ohmyfood</h2>
+
+                <a href="#" class = "footer__containt">
+                    <i class="fas fa-utensils footer__containt__icon"></i>Proposer un restaurant</a>
+
+                <a href="#" class = "footer__containt">
+                    <i class="fas fa-hands-helping footer__containt__icon"></i>Devenir partenaire</a>
+                
+                <a href="#" class = "footer__containt">Mentions légales</a>
+                <a href="mailto:a@gtsl.com" class = "footer__containt">contact</a>
+
+            </footer>
+
         </div>
-        </header>
+
     </body>
 
 </html>

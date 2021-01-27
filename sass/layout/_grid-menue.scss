@@ -1,5 +1,6 @@
-/*containeur générale*/
-#container--menue{
+/*containeur générale des pages des restaurants*/
+#container--menue {
+    overflow: hidden;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 65px 1415px 200px;
@@ -7,4 +8,8 @@
         "header"
         "menue"
         "footer-menue";
+
+        @include respond-to(large) {
+            grid-template-rows: 65px 780px 200px;
+        }
 }

@@ -1,6 +1,5 @@
-
+/*--partie les etapes du foctionnement du site*/
 .operation {
-    
     grid-area: foctio;
     @extend %center-element;
     flex-direction: column;
@@ -11,17 +10,20 @@
      grid-template-columns: 1fr 1fr 1fr;
      grid-template-rows: 1fr;
      column-gap: 20px;
+     justify-items: center;
     }
-
     @extend %centre-pad;
     &__title {
         margin-bottom: 25px;
         align-self: flex-start;
         @include respond-to(small) {
             position: absolute;
+            margin-left: auto;
+            margin-right: auto;
             top: 40px;
-            left: 50%;
-            right: 50%;
+            left: 0;
+            right: 0;
+            text-align: center;
             
            }
 
@@ -30,10 +32,11 @@
 
         }
     }
-
+    /*les différentes étapes*/
     &__step {
         @include form-container($h:70px, $pad:0px);
         width: 100%;
+        max-width: 400px;
         @include btn;
         position: relative;
         @extend %center-element;
@@ -47,8 +50,6 @@
         @include respond-to(small) {
             min-width: 100px;
         }
-
-
 
         &:active {
 
@@ -74,7 +75,7 @@
             bottom: 0;  
             left: 0;
         }
-        
+        /*les numeros d'étapes*/
         &__nber {
             position: absolute;
             left: -10px;
@@ -87,7 +88,7 @@
             z-index: 1;
             
         }
-
+        /*les icones*/
         &__icon {
             color: $color-icon;
             margin-left: 30px;
@@ -97,8 +98,7 @@
             }
 
         }
-    
-
+        /*les déscriptions*/
         &__describes {
             margin-left: 25px;
             font-weight: bolder;
